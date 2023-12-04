@@ -1,3 +1,9 @@
+// File: A3_S1_20220037_Problem1.cpp
+// Purpose: Label Generator
+// Author: Ahmed Elkholy
+// Section: S1
+// ID: 20220037
+// TA: Khaled Ibrahim
 #include <bits/stdc++.h>
 using namespace std;
 #include <fstream>
