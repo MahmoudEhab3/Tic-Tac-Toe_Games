@@ -38,11 +38,14 @@ bool X_O_Board::update_board (int x, int y, char mark){
 void X_O_Board::display_board() {
 
     for (int i = 0; i < 3; ++i) {
-        if (i==0) cout <<"      ";
+        if (i==0) cout <<"              ";
+        if (i==1) cout <<"    ";
         for (int j = 0; j < 3 + i; ++j) {
             if (j >= 3 - 1 - i && j <= 3 - 1 + i) {
                 cout << "(" << i << "," << j << ")";            //Done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                cout<<"| ";
                 cout <<board [i][j];
+                cout<<" |";
             } else {
                 cout <<setw(7);
             }
@@ -51,6 +54,7 @@ void X_O_Board::display_board() {
     }
     cout << endl;
 }
+
 
 // Returns true if there is any winner
 // either X or O
