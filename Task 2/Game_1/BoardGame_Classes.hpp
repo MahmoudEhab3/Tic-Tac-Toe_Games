@@ -70,7 +70,7 @@ class Player {
 // This class represents a random computer player
 // that generates random positions x y (0 to 2)
 // If invalid, game manager asks to regenerate
-class RandomPlayer: public Player {
+class RandomPlayer: public Player, protected X_O_Board{
     protected:
         int dimension;
     public:
