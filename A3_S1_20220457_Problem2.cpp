@@ -115,12 +115,12 @@ void StringSet :: removeStr(string toRemove){
         // If the word is found, remove it from the set
         if(mainSet[i] == toRemove){
             mainSet.erase(mainSet.begin() + i);
-            cout << "The word \"" << toRemove << "\" is removed from the set.\n";
+            cout << "The word \"" << toRemove << "\" is removed.\n";
             return;
         }
     }
     // If the word is not found in the set
-    cerr << "The word \"" << toRemove << "\" is NOT in the set!\n";
+    cerr << "The word \"" << toRemove << "\" is not found\n";
 }
 
 // Clear all elements in the set
@@ -191,7 +191,7 @@ int main(){
     fstream inputFile(fileName);
     // Check if the file exists or not
     if(!inputFile)
-        cerr << "The file \"" << fileName << "\" is NOT found!\n";
+        cerr << "The file \"" << fileName << "\" is not found!\n";
     else{
         StringSet set0(inputFile);
         cout << "set0 contents: ";
@@ -199,56 +199,56 @@ int main(){
     }
 
     // Initializing objects with strings
-    StringSet set1("Chocolate ice cream, chocolate milk, and chocolate bars are delicious.");
-    StringSet set2("I love chocolate bars very much! They are delicious.");
+    StringSet line1("Football is popular because it has the power to unite people.");
+    StringSet line2("Football is a fun exercise that may increase your fitness levels and boost your self-confidence.");
+    StringSet line3("it aids in enhancement your system .");
+    StringSet line4("it’s also a fantastic activity for people looking to enhance their cognitive function.");
 
     // Printing the contents of the two sets
-    cout << "set1 contents: ";
-    set1.printSet();
-    cout << "set2 contents: ";
-    set2.printSet();
+    cout << "line1 contents: ";
+    line1.printSet();
+    cout << "line2 contents: ";
+    line2.printSet();
 
     // Checking similarity using binary cosine coefficient
-    cout << "Checking the similarity \n";
-    cout << set1.checkSimilarity(set2) << endl;
+    cout << "The similarity between 1 and 2 is \n";
+    cout << line1.checkSimilarity(line2) << endl;
 
     // Testing the addition of string to a set
     cout << "Adding text\n";
-    set2.addStr("This is some more new text!");
+    line2.addStr("and it aids in muscle growth");
     cout << "New content: ";
-    set2.printSet();
+    line2.printSet();
 
     // Print the number of strings in the set
-    cout << "Number of words in set2 is " << set2.strCount();
+    cout << "Number of words in line2 is " << line2.strCount();
 
     // Removing all strings in the set and clearing its contents
     cout << "Cleared\n";
-    set2.clearSet();
+    line2.clearSet();
 
     // Initializing more objects
-    StringSet set3("Chocolate is made out of cocoa seeds.");
-    StringSet set4("Milk is a necessary ingredient in the ice cream.");
-    cout << "set3 contents: ";
-    set3.printSet();
-    cout << "set4 contents: ";
-    set4.printSet();
+
+    cout << "line3 contents: ";
+    line3.printSet();
+    cout << "line4 contents: ";
+    line4.printSet();
 
     // Testing the union of two sets by overloaded + operator
-    set2 = set3 + set4;
-    cout << "set2 now is the union of set3 and set4!\n";
+    line2 = line3 + line4;
+    cout << "line2 now is the union of line3 and line4!\n";
     cout << "New content: ";
-    set2.printSet();
+    line2.printSet();
 
-    // Testing the intersection of two sets by overloaded * operator
-    StringSet set5 = set1 * set2;
-    cout << "set5 is the intersection of set1 and set2!\n";
-    cout << "set5 contents: ";
-    set5.printSet();
+    //  intersection  by overloaded * operator
+    StringSet line5 = line1 * line2;
+    cout << "line5 is the intersection of line1 and line2!\n";
+    cout << "line5 contents: ";
+    line5.printSet();
 
-    // Testing the removal of string from a set
-    StringSet set6("You are you test string and if you know you know");
-    cout << "set6 contents: "; set6.printSet();
-    cout << "Removing word from set6....\n"; set6.removeStr("you");
-    cout << "New content: "; set6.printSet();
+  // remove
+    cout << "line2 contents: "; line2.printSet();
+    cout << "Removing word from line2\n"; line2.removeStr("Football");
+    cout << "New content: "; line2.printSet();
     return 0;
 }
