@@ -1,6 +1,6 @@
 // Class definition for X_O_Board class
 // Author:  Ahmed Elkholy
-// Date:    5/12/2023
+// Date:    6/12/2023
 // Version: 1
 #include <iostream>
 #include <random>
@@ -23,7 +23,7 @@ X_O_Board::X_O_Board () {
 // Return true  if move is valid and put it on board
 // within board boundaries in empty cell
 // Return false otherwise
-bool X_O_Board::update_board (int x, int y, char mark){
+bool X_O_Board::update_board (int x, int y, char mark)  {
    // Only update if move is valid
    if (!(x < 0 || x > 2 || y < 0 || y > 4) && (board[x][y] == 0)) {
       board[x][y] = toupper(mark);                                    //Done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -55,14 +55,13 @@ void X_O_Board::display_board() {
     cout << endl;
 }
 
-
 // Returns true if there is any winner
 // either X or O
 // Written in a complex way. DO NOT DO LIKE THIS.
 bool X_O_Board::is_winner() {
     char row_win[4], col_win[1], diag_win[2];
 
-    row_win [0] = board[1][1] & board[1][1] & board[1][3];
+    row_win [0] = board[1][1] & board[1][2] & board[1][3];
     row_win [1] = board[2][1] & board[2][2] & board[2][3];
     row_win [2] = board[2][0] & board[2][1] & board[2][2];
     row_win [3] = board[2][2] & board[2][3] & board[2][4];
@@ -70,15 +69,16 @@ bool X_O_Board::is_winner() {
     diag_win[0] = board[0][2] & board[1][3] & board[2][4];
     diag_win[1] = board[0][2] & board[1][1] & board[2][0];
 
-    for (int i:{0,1,2,3}) {
-        if ( (row_win[i] && (row_win[i] == board[i][2])) ||                                //Done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-             (col_win[i] && (col_win[i] == board[2][i])) )
-        {return true;}
-    }
 
+    if ( (row_win[0] && (row_win[0] == board[1][2]))) return true;
+    if ( (row_win[1] && (row_win[1] == board[2][2]))) return true;
+    if ( (row_win[2] && (row_win[2] == board[2][1]))) return true;
+    if ( (row_win[3] && (row_win[3] == board[2][3]))) return true;
+    if ( (col_win[0] && (col_win[0] == board[0][2]))) return true;
     if ((diag_win[0] && diag_win[0] == board[0][2]) ||
         (diag_win[1] && diag_win[1] == board[0][2]))
     {return true;}
+
     return false;
 
 }
@@ -91,3 +91,4 @@ bool X_O_Board::is_draw() {
 bool X_O_Board::game_is_over () {
     return n_moves >= 9;                                                //Done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
+
