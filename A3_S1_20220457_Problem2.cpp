@@ -26,35 +26,34 @@ public:
     StringSet(fstream & file);
     // Constructor to load the string passed & breaks it to tokens
     StringSet(string text = "");
-    // Add a certain string to the set
+    // Add a certain string 
     void addStr(string toAdd);
-    // Remove a certain string from the set
+    // Remove a certain string 
     void removeStr(string toRemove);
-    // Clear the entire set
+    // Clear the entire line
     void clearSet();
-    // Return number of strings in the set
+    // Return number of words
     long strCount();
-    // Output all strings in the set
+    // Output all strings 
     void printSet();
-    // Overload the "+" operator to return the union of two sets
+    // Overload the "+" operator to return the union 
     StringSet operator + (StringSet & anotherSet);
-    // Overload the "*" operator to return the intersection of two sets
+    // Overload the "*" operator to return the intersection 
     StringSet operator * (StringSet & anotherSet);
-    // Check the similarity of two StringSet objects
+    // Check the similarity
     double checkSimilarity(StringSet & anotherSet);
 };
 //_____________________________________________________________________________________
 // Convert the text entered into lowercase with no punctuation marks
 string & modifyText(string & text){
     for(int i = 0; i < text.length(); ++i){
-        // Check if the character is already lowercase, ignore it
+        // Check if the character is already lowercase
         if((text[i] >= 97) && (text[i] <= 122))
         { continue; }
-        // Check if the character is letter or number, convert it to lowercase
+        // Check if the character is letter or number
         if(isalnum(text[i]))
         { text[i] = tolower(text[i]); }
-            // Check if the character is space and the next character
-            // is not space make it only one space
+           
         else if(isspace(text[i]) && !isspace(text[i + 1]))
         { text[i] = ' '; }
             // Convert any other character to null character
@@ -93,7 +92,7 @@ StringSet :: StringSet(string text){
     }
 }
 
-// Add certain string to the set
+// Add certain string 
 void StringSet :: addStr(string toAdd){
     toAdd = modifyText(toAdd);
     // Convert the coming string into input string stream
@@ -108,50 +107,44 @@ void StringSet :: addStr(string toAdd){
     }
 }
 
-// Remove certain string from the set
+// Remove a string 
 void StringSet :: removeStr(string toRemove){
-    // Loop over the set to check for the word to remove
     for(int i = 0; i < mainSet.size(); ++i){
-        // If the word is found, remove it from the set
         if(mainSet[i] == toRemove){
             mainSet.erase(mainSet.begin() + i);
             cout << "The word \"" << toRemove << "\" is removed.\n";
             return;
         }
     }
-    // If the word is not found in the set
     cerr << "The word \"" << toRemove << "\" is not found\n";
 }
 
-// Clear all elements in the set
+// Clear all elements 
 void StringSet :: clearSet(){ mainSet.clear(); }
 
-// Return current number of strings in the set
+// Return current number of words
 long StringSet :: strCount(){ return mainSet.size(); }
 
-// Output all strings in the set
+// Output all strings 
 void StringSet :: printSet(){
     for(string word : mainSet)
     { cout << word << " "; }
     cout << endl;
 }
 
-// Overload the "+" operator to return the union of two sets
+// Overload the "+" operator to return the union
 StringSet StringSet :: operator + (StringSet & anotherSet){
     StringSet unionOfSets;
-    // Copy strings from the current set to unionOfSets
     unionOfSets.mainSet = this->mainSet;
-    // Copy strings from the passed set to unionOfSets
     for(string word : anotherSet.getVector())
     { unionOfSets.mainSet.push_back(word); }
     // Return the object after combining the sets in it
     return unionOfSets;
 }
 
-// Overload the "*" operator to return the intersection of two sets
+// Overload the "*" operator to return the intersection
 StringSet StringSet :: operator * (StringSet & anotherSet){
     StringSet intersectionOfSets;
-    // Loop over the two sets and check if there is common words
     for(string word : this->mainSet){
         for(string anotherWord : anotherSet.getVector()){
             // Add the common words to the intersectionOfSets
@@ -159,17 +152,16 @@ StringSet StringSet :: operator * (StringSet & anotherSet){
             { intersectionOfSets.mainSet.push_back(word); }
         }
     }
-    // Return the common elements between the two sets
     return intersectionOfSets;
 }
 
-// Check the similarity of two StringSet objects
+// Check the similarity
 double StringSet :: checkSimilarity(StringSet & anotherSet){
     int commonWords = 0;
     double similarityFactor = 0.0;
     // Get the number of common words using methods in class StringSet
     commonWords = (*this * anotherSet).strCount();
-    // (*this * anotherSet) returns an object with the common words between the two sets
+    // (*this * anotherSet) returns an object with the common words 
     // strCount() returns the number of these common words
     cout << "Number of common Words = " << commonWords << endl;
     // Compute the similarity factor using the binary cosine coefficient equation
@@ -205,34 +197,27 @@ int main(){
     StringSet line4("it’s also a fantastic activity for people looking to enhance their cognitive function.");
 
     // Printing the contents of the two sets
-    cout << "line1 contents: ";
+    cout << "line1 content: ";
     line1.printSet();
-    cout << "line2 contents: ";
+    cout << "line2 content: ";
     line2.printSet();
 
     // Checking similarity using binary cosine coefficient
     cout << "The similarity between 1 and 2 is \n";
     cout << line1.checkSimilarity(line2) << endl;
 
-    // Testing the addition of string to a set
+    // Testing the addition of string 
     cout << "Adding text\n";
     line2.addStr("and it aids in muscle growth");
     cout << "New content: ";
     line2.printSet();
 
-    // Print the number of strings in the set
+    // Print the number of words
     cout << "Number of words in line2 is " << line2.strCount();
 
-    // Removing all strings in the set and clearing its contents
+    // Removing all strings 
     cout << "Cleared\n";
     line2.clearSet();
-
-    // Initializing more objects
-
-    cout << "line3 contents: ";
-    line3.printSet();
-    cout << "line4 contents: ";
-    line4.printSet();
 
     // Testing the union of two sets by overloaded + operator
     line2 = line3 + line4;
