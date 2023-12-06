@@ -12,18 +12,19 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
-// Class for each process and its (name, id, memory used)
+
+// Class for each process and its (name, PID, memory used)
 class process{
 protected:
     string name;
-    int id;
+    int PID;
     string memory;
 public:
     // Constructor that takes process members
-    process(string name_, int id_, string memory_){
-        name = name_;
-        id = id_;
-        memory = memory_;
+    process(string n, int p, string m){
+        name = n;
+        PID = p;
+        memory = m;
     }
 
     // Getters
@@ -31,7 +32,7 @@ public:
         return memory;
     }
     int getID(){
-        return id;
+        return PID;
     }
     string getName(){
         return name;
@@ -85,27 +86,16 @@ public:
             line = line.substr(25, line.length() - 1); // removing name from line
             stringstream ss(line);
 
-            // Getting id and memory from line and neglecting other elements
+            // Getting PID and memory from line and neglecting other elements
             ss >> id >> trash >> trash >> memory;
             process p(name, id, memory); // creating process object
             addProcess(p); // adding process to tasks
         }
     }
 
-    // Function that sorts tasks by memory used (a for ascending and d for descending)
-    void sort_by_memory(char order = 'd'){
-        if(order == 'a'){
-            sort(tasks.begin(), tasks.end(), [](process a, process b){
-                if(a.getMemory().size() < b.getMemory().size()){
-                    return true;
-                }
-                else if(a.getMemory().size() == b.getMemory().size()){
-                    return a.getMemory() < b.getMemory();
-                }
-                return false;
-            });
-        }
-        else{
+
+    // Function that sorts tasks
+    void sort_by_memory(){
             sort(tasks.begin(), tasks.end(), [](process a, process b){
                 if(a.getMemory().size() > b.getMemory().size()){
                     return true;
@@ -117,7 +107,8 @@ public:
             });
         }
 
-    }
+
+
 };
 
 int main(){
