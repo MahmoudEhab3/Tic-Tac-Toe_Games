@@ -133,9 +133,9 @@ bool X_O_Board::is_winner() {
     return false;
 }
 
-// Return true if 9 moves are done and no winner
+// Return true if 24 moves are done and no winner
 bool X_O_Board::is_draw() {
-    return (n_moves == 24 && !is_winner());
+    return (n_moves >= 24 && !is_winner());
 }
 
 bool X_O_Board::game_is_over () {
