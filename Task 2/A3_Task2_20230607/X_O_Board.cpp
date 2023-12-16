@@ -7,6 +7,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int X_O_Board::count_x = 0;
+int X_O_Board::count_o = 0;
+
 // Set the board
 X_O_Board::X_O_Board () {
     n_rows = n_cols = 5;
@@ -54,12 +57,12 @@ bool X_O_Board::is_winner() {
     if (n_moves == 24) {
 
         //Check rows and columns
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < 3; ++j) {
                 if (board[i][j] == 'X' && board[i][j + 1] == 'X' && board[i][j + 2] == 'X') count_x++;
                 if (board[i][j] == 'O' && board[i][j + 1] == 'O' && board[i][j + 2] == 'O') count_o++;
-                if (board[i][j] == 'X' && board[i + 1][j] == 'X' && board[i + 2][j] == 'X') count_x++;
-                if (board[i][j] == 'O' && board[i + 1][j] == 'O' && board[i + 2][j] == 'O') count_o++;
+                if (board[j][i] == 'X' && board[j + 1][i] == 'X' && board[j + 2][i] == 'X') count_x++;
+                if (board[j][i] == 'O' && board[j + 1][i] == 'O' && board[j + 2][i] == 'O') count_o++;
             }
         }
 
