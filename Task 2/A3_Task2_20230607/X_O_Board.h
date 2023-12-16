@@ -7,6 +7,7 @@
 #include "Board.h"
 
 class X_O_Board:public Board {
+    static int count_x,count_o;
 public:
     X_O_Board ();
     bool update_board (int x, int y, char mark);
