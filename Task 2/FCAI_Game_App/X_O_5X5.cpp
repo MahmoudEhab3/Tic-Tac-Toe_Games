@@ -77,7 +77,6 @@ bool X_O_5X5::is_winner() {
             if (board[i][4 - i] == 'O' && board[i + 1][3 - i] == 'O' && board[i + 2][2 - i] == 'O') count_o++;
         }
 
-
         //Additional diagonals
         if (board[0][2] == 'X' && board[1][3] == 'X' && board[2][4] == 'X') count_x++;
         if (board[0][2] == 'O' && board[1][3] == 'O' && board[2][4] == 'O') count_o++;
@@ -117,9 +116,6 @@ bool X_O_5X5::is_winner() {
 
         if (board[1][2] == 'X' && board[2][1] == 'X' && board[3][0] == 'X') count_x++;
         if (board[1][2] == 'O' && board[2][1] == 'O' && board[3][0] == 'O') count_o++;
-
-        // cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
-        // cout<<count_o<<" "<<count_x<<"\n";
 
         if (count_x < count_o) {
             cout << "O WINS !!\n";
