@@ -48,52 +48,88 @@ void X_O_Board::display_board() {
 // Returns true if there is any winner
 // either X or O
 // Written in a complex way. DO NOT DO LIKE THIS.
+
 bool X_O_Board::is_winner() {
 
-    char row_win[15], col_win[15], diag_win[18];
-    for (int i:{0,1,2}) {
-        for (int j:{0,1,2}) {
-            row_win[i] = board[i][j] & board[i][j+1] & board[i][j+2];
-            col_win[i] = board[j][i] & board[j][i+1] & board[j][i+2];
+    if (n_moves == 24) {
+
+        //Check rows and columns
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                if (board[i][j] == 'X' && board[i][j + 1] == 'X' && board[i][j + 2] == 'X') count_x++;
+                if (board[i][j] == 'O' && board[i][j + 1] == 'O' && board[i][j + 2] == 'O') count_o++;
+                if (board[i][j] == 'X' && board[i + 1][j] == 'X' && board[i + 2][j] == 'X') count_x++;
+                if (board[i][j] == 'O' && board[i + 1][j] == 'O' && board[i + 2][j] == 'O') count_o++;
+            }
+        }
+
+        //Check main diagonals
+        for (int i = 0; i < 3; ++i) {
+            if (board[i][i] == 'X' && board[i + 1][i + 1] == 'X' && board[i + 2][i + 2] == 'X') count_x++;
+            if (board[i][i] == 'O' && board[i + 1][i + 1] == 'O' && board[i + 2][i + 2] == 'O') count_o++;
+        }
+
+        //Check secondary diagonals
+        for (int i = 0; i < 3; ++i) {
+            if (board[i][4 - i] == 'X' && board[i + 1][3 - i] == 'X' && board[i + 2][2 - i] == 'X') count_x++;
+            if (board[i][4 - i] == 'O' && board[i + 1][3 - i] == 'O' && board[i + 2][2 - i] == 'O') count_o++;
+        }
+
+
+        //Additional diagonals
+        if (board[0][2] == 'X' && board[1][3] == 'X' && board[2][4] == 'X') count_x++;
+        if (board[0][2] == 'O' && board[1][3] == 'O' && board[2][4] == 'O') count_o++;
+
+        if (board[2][0] == 'X' && board[3][1] == 'X' && board[4][2] == 'X') count_x++;
+        if (board[2][0] == 'O' && board[3][1] == 'O' && board[4][2] == 'O') count_o++;
+
+        if (board[1][0] == 'X' && board[2][1] == 'X' && board[3][2] == 'X') count_x++;
+        if (board[1][0] == 'O' && board[2][1] == 'O' && board[3][2] == 'O') count_o++;
+
+        if (board[0][1] == 'X' && board[1][2] == 'X' && board[2][3] == 'X') count_x++;
+        if (board[0][1] == 'O' && board[1][2] == 'O' && board[2][3] == 'O') count_o++;
+
+        if (board[2][1] == 'X' && board[3][2] == 'X' && board[4][3] == 'X') count_x++;
+        if (board[2][1] == 'O' && board[3][2] == 'O' && board[4][3] == 'O') count_o++;
+
+        if (board[1][2] == 'X' && board[3][2] == 'X' && board[3][4] == 'X') count_x++;
+        if (board[1][2] == 'O' && board[3][2] == 'O' && board[3][4] == 'O') count_o++;
+
+        if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X') count_x++;
+        if (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O') count_o++;
+
+        if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X') count_x++;
+        if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O') count_o++;
+
+        if (board[2][4] == 'X' && board[3][3] == 'X' && board[4][2] == 'X') count_x++;
+        if (board[2][4] == 'O' && board[3][3] == 'O' && board[4][2] == 'O') count_o++;
+
+        if (board[1][4] == 'X' && board[2][3] == 'X' && board[3][2] == 'X') count_x++;
+        if (board[1][4] == 'O' && board[2][3] == 'O' && board[3][2] == 'O') count_o++;
+
+        if (board[2][3] == 'X' && board[3][2] == 'X' && board[4][1] == 'X') count_x++;
+        if (board[2][3] == 'O' && board[3][2] == 'O' && board[4][1] == 'O') count_o++;
+
+        if (board[0][3] == 'X' && board[1][2] == 'X' && board[2][1] == 'X') count_x++;
+        if (board[0][3] == 'O' && board[1][2] == 'O' && board[2][1] == 'O') count_o++;
+
+        if (board[1][2] == 'X' && board[2][1] == 'X' && board[3][0] == 'X') count_x++;
+        if (board[1][2] == 'O' && board[2][1] == 'O' && board[3][0] == 'O') count_o++;
+
+        // cout<<"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
+        // cout<<count_o<<" "<<count_x<<"\n";
+
+        if (count_x < count_o) {
+            cout << "O WINS !!\n";
+            exit(0);
+        } else if (count_x > count_o) {
+            cout << "X WINS !!\n";
+            exit(0);
+        }
+        else{
+            return false;
         }
     }
-
-    // Check diagonals for potential wins
-    int index = 0;
-    // Primary diagonals from top-left to bottom-right
-    for (int i = 0; i <= 2; ++i) { //3
-        diag_win[index++] = board[i][i] == board[i + 1][i + 1] && board[i + 1][i + 1] == board[i + 2][i + 2];
-    }
-
-    // Secondary diagonals from top-right to bottom-left
-    for (int i = 0; i <= 2; ++i) { //3
-        diag_win[index++] = board[i][4 - i] == board[i + 1][3 - i] && board[i + 1][3 - i] == board[i + 2][2 - i];
-    }
-
-    // Additional diagonals
-    diag_win[index++] = board[0][2] == board[1][3] && board[1][3] == board[2][4];
-    diag_win[index++] = board[2][0] == board[3][1] && board[3][1] == board[4][2];
-    diag_win[index++] = board[1][0] == board[2][1] && board[2][1] == board[3][2];
-    diag_win[index++] = board[0][1] == board[1][2] && board[1][2] == board[2][3];
-    diag_win[index++] = board[2][1] == board[3][2] && board[3][2] == board[4][3];
-    diag_win[index++] = board[1][2] == board[2][3] && board[2][3] == board[3][4];
-
-    diag_win[index++] = board[0][2] == board[1][1] && board[1][1] == board[2][0];
-    diag_win[index++] = board[2][4] == board[3][3] && board[3][3] == board[4][2];
-    diag_win[index++] = board[1][4] == board[2][3] && board[2][3] == board[3][2];
-    diag_win[index++] = board[2][3] == board[3][2] && board[3][2] == board[4][1];
-    diag_win[index++] = board[0][3] == board[1][2] && board[1][2] == board[2][1];
-    diag_win[index++] = board[1][2] == board[2][1] && board[2][1] == board[3][0];
-
-
-    for (int i:{0,1,2,3,4}) {
-        if ( (row_win[i] && (row_win[i] == board[i][0])) ||
-             (col_win[i] && (col_win[i] == board[0][i])) )
-        {return true;}
-    }
-    if ((diag_win[0] && diag_win[0] == board[1][1]) ||
-        (diag_win[1] && diag_win[1] == board[1][1]))
-    {return true;}
     return false;
 }
 
