@@ -9,6 +9,7 @@
 #include "Board_Games.hpp"
 #include <iostream>
 using namespace std;
+
 connect4::connect4() {
     int choice;
     cout << "Choose your opponent:" << endl;
@@ -29,7 +30,7 @@ connect4::connect4() {
             player = (player == 1) ? 2 : 1;
         }
     };
-    // Inside the connect4::connect4() function
+    
     if (choice == 2) {
         display_board();
         while (!game_end) {
@@ -49,7 +50,7 @@ connect4::connect4() {
     }
 
 }
-//_____________________________________________________________
+
 void connect4::display_board() {
     cout<<"  1   2   3   4   5   6   7"<<endl;
     for (int i=0;i<6;i++){
@@ -71,7 +72,6 @@ void connect4::display_board() {
     cout<<"----------------------------"<<endl;
 }
 
-//_______________________________________________________________
 bool connect4::update_board (int input, int y, char mark){
         if(n_rows>=0){
             if(board[n_rows][input] != 0){
@@ -89,8 +89,6 @@ bool connect4::update_board (int input, int y, char mark){
         }
     return false;
 }
-
-//____________________________________________________________
 
 bool connect4::is_winner(){
     for (int i = 0; i < 6; i++) {
@@ -140,7 +138,7 @@ bool connect4::is_winner(){
     }
     return false;
 }
-//____________________________________________________________________________________
+
 bool connect4::is_draw() {
     // Check if there are any empty spaces left on the board
     for (int i = 0; i < 6; i++) {
@@ -157,7 +155,6 @@ bool connect4::is_draw() {
     return true;
 
 }
-//_____________________________________________________________________________
 
 bool connect4::game_is_over() {
     // Check if a player has won
@@ -171,7 +168,7 @@ bool connect4::game_is_over() {
     // If neither player has won nor the game is a draw, the game is not over
     return false;
 }
-//______________________________________________________________________________
+
 void connect4::computer_move() {
     // You can implement a simple random move for the computer player
     int random_column;
