@@ -25,7 +25,7 @@ void Pyramid_X_O::remove_board(int x, int y) {
     n_moves--;
 }
 
-bool Pyramid_X_O::is_valid_move(int x, int y) {
+bool Pyramid_X_O::is_valid_move(int x, int y) {                     //Newwwwwwwwwwwwwwwwwwwww
     // Check if the cell at position (x, y) is empty
     if(((x==0&&y==2)||(x==1&&y==1)||(x==1&&y==2)||(x==1&&y==3)||(x==2&&y==0)||(x==2&&y==1)||(x==2&&y==2)||(x==2&&y==3)||(x==2&&y==4))&&board[x][y]==0){
         return true;
@@ -94,6 +94,41 @@ bool Pyramid_X_O::is_winner() {
 
     return false;
 
+}
+
+pair<int,int> Pyramid_X_O::A_I_move() {         //Newwwwwwwwwwwwwwwwwwwww
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (is_valid_move(i,j)) {
+                board[i][j]='o';
+                if (is_winner()) {
+                    board[i][j]=0;
+                    return {i, j};
+                }
+                board[i][j]=0;
+            }
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (is_valid_move(i,j)) {
+                board[i][j]='x';
+                if (is_winner()) {
+                    board[i][j]=0;
+                    return {i, j};
+                }
+                board[i][j]=0;
+            }
+        }
+    }
+
+    while (true) {
+        int x = rand() % 3;
+        int y = rand() % 5;
+        if (is_valid_move(x,y)) {
+            return {x, y};
+        }
+    }
 }
 
 // Return true if 9 moves are done and no winner
