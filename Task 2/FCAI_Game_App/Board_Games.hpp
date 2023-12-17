@@ -28,6 +28,8 @@ public:
    virtual void display_board() = 0;
    // Return true if game is over
    virtual bool game_is_over() = 0;
+
+   virtual pair<int, int> A_I_move() = 0 ;     // Newwwwwwwwwwwwwwwwwwwww
 };
 
 ///////////////////////////////////////////
@@ -41,6 +43,7 @@ public:
     void display_board();
     bool is_winner();
     bool is_draw();
+    pair<int, int> A_I_move();    // Newwwwwwwwwwwwwwwwwwwww
     bool game_is_over();
 };
 
@@ -53,7 +56,7 @@ public:
    bool is_winner();
    bool is_draw();
    bool game_is_over();
-   void bestMove();
+   pair<int, int> A_I_move(); // Newwwwwwwwwwwwwwwwwwwww
    bool is_valid_move(int x, int y);
 };
 
@@ -67,6 +70,7 @@ public:
     connect4();
     void display_board();
     bool is_winner();
+    pair<int, int> A_I_move();         // Newwwwwwwwwwwwwwwwwwwww
     bool is_draw();
     bool game_is_over();
     bool update_board (int x, int y, char mark);
@@ -82,10 +86,12 @@ public:
     X_O_5X5 ();
     bool update_board (int x, int y, char mark);
     void display_board();
+    pair<int, int> A_I_move();   // Newwwwwwwwwwwwwwwwwwwww
     bool is_winner();
     bool is_draw();
     bool game_is_over();
 };
+
 
 ///////////////////////////////////////////
 // This class represents a player who has
