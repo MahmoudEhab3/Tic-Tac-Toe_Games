@@ -19,7 +19,7 @@ RandomPlayer::RandomPlayer (char symbol, int dimension):Player(symbol)
 }
 
 // Generate a random move
-void RandomPlayer::get_move (int& x, int& y)  {
+void RandomPlayer::get_move (int& x, int& y)  {        //Newwwwwwwwwwwwwwwwwwww
     x = A_I_move().first;
     y = A_I_move().second;
 }
