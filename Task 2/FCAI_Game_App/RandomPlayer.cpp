@@ -20,6 +20,6 @@ RandomPlayer::RandomPlayer (char symbol, int dimension):Player(symbol)
 
 // Generate a random move
 void RandomPlayer::get_move (int& x, int& y)  {
-    x = (int) (rand()/(RAND_MAX + 1.0) * dimension);
-    y = (int) (rand()/(RAND_MAX + 1.0) * dimension);
+    x = A_I_move().first;
+    y = A_I_move().second;
 }
