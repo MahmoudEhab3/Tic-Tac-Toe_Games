@@ -179,3 +179,7 @@ void connect4::computer_move() {
     update_board(random_column, 0, 0);
     cout << "Computer chose column " << random_column + 1 << endl;
 }
+
+pair<int, int> connect4::A_I_move() {         //Newwwwwwwwwwwwwww
+    return {1,1};
+}
