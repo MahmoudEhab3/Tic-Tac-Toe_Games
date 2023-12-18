@@ -139,3 +139,7 @@ bool X_O_5X5::is_draw() {
 bool X_O_5X5::game_is_over () {
     return n_moves >= 24;
 }
+
+pair<int, int> X_O_5X5::A_I_move() {  //Newwwwwwwwwwwwwwwww
+    return {1,2};
+}
