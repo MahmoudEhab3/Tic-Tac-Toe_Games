@@ -11,7 +11,7 @@
 using namespace std;
 
 // Set player symbol and name as Random Computer Player
-RandomPlayer::RandomPlayer (char symbol, int dimension):Player(symbol)
+RandomPlayer::RandomPlayer (char symbol, int dimension,Board *brd):Player(symbol),brdptr(brd)         //newwwwwwwwwwwwwwwwwwwwwwwww
 {
     this->dimension = dimension;
     this->name = "Random Computer Player";
@@ -19,7 +19,8 @@ RandomPlayer::RandomPlayer (char symbol, int dimension):Player(symbol)
 }
 
 // Generate a random move
-void RandomPlayer::get_move (int& x, int& y)  {        //Newwwwwwwwwwwwwwwwwwww
-    x = A_I_move().first;
-    y = A_I_move().second;
+void RandomPlayer::get_move (int& x, int& y)  {
+    pair<int,int> Bestmove=brdptr->A_I_move();         //newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+    x=Bestmove.first;
+    y=Bestmove.second;
 }
