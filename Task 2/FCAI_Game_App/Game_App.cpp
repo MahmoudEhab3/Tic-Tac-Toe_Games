@@ -22,12 +22,14 @@ void Game_interface(){
 
             cout << "if you want to play with AI press 1\n";
             cin >> choice;
+            Board* brd = nullptr;         //newwwwwwwwwwwwwwwwwwwwwwww
             if (choice != '1')
                 players[1] = new Player(2, 'o');
             else
                 //Player pointer points to child
-                players[1] = new RandomPlayer('o', 5);
-            GameManager x_o_game(new Pyramid_X_O(), players);
+            brd = new Pyramid_X_O();
+            players[1] = new RandomPlayer('o', 5,brd);   //newwwwwwwwwwwwwwwwwwwwwwww
+            GameManager x_o_game(brd, players);
             x_o_game.run();
             break;
         }
@@ -38,16 +40,19 @@ void Game_interface(){
         case 3:{
             char choice;
             Player* players[2];
-            players[0] = new Player (1, 'x');
+            players[0] = new Player (1, 'x');        
+
             cout << "if you want to play with AI press 1\n";
             cin >> choice;
+            Board* brd = nullptr;                       //newwwwwwwwwwwwwwwwwwwwwwww
             if (choice != '1')
                 players[1] = new Player(2, 'o');
             else
                 //Player pointer points to child
-                players[1] = new RandomPlayer('o', 5);
+                brd = new X_O_5X5;
+                players[1] = new RandomPlayer('o', 5,brd);                    //newwwwwwwwwwwwwwwwwwwwwwww
 
-            GameManager x_o_game(new X_O_5X5(), players);
+            GameManager x_o_game(brd, players);
             x_o_game.run();
             break;
         }
@@ -55,15 +60,18 @@ void Game_interface(){
             char choice;
             Player* players[2];
             players[0] = new Player (1, 'x');
+
             cout << "if you want to play with AI press 1\n";
             cin >> choice;
+            Board* brd = nullptr;                              //newwwwwwwwwwwwwwwwwwwwwwww
             if (choice != '1')
                 players[1] = new Player(2, 'o');
             else
                 //Player pointer points to child
-                players[1] = new RandomPlayer('o', 3);
+                brd = new X_O_5X5;
+                players[1] = new RandomPlayer('o', 3,brd);                        //newwwwwwwwwwwwwwwwwwwwwwww
 
-            GameManager x_o_game(new X_O_Board(), players);
+            GameManager x_o_game(brd, players);
             x_o_game.run();
             break;
         }
