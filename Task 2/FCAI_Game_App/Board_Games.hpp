@@ -121,12 +121,13 @@ class Player {
 // This class represents a random computer player
 // that generates random positions x y (0 to 2)
 // If invalid, game manager asks to regenerate
-class RandomPlayer: public Player, protected Pyramid_X_O{
+class RandomPlayer: public Player{
     protected:
         int dimension;
+        Board* brdptr= nullptr;           //newwwwwwwwwwwwwwwwwwwwwww
     public:
         // Take a symbol and pass it to parent
-        RandomPlayer (char symbol, int dimension);
+        RandomPlayer (char symbol, int dimension, Board* brdptr);         //newwwwwwwwwwwwwwwwwwwwww
         // Generate a random move
         void get_move(int& x, int& y);
 };
