@@ -78,3 +78,7 @@ bool X_O_Board::is_draw() {
 bool X_O_Board::game_is_over () {
     return n_moves >= 9;
 }
+
+pair<int, int> X_O_Board::A_I_move() {
+    return {(int) (rand()/(RAND_MAX + 1.0) * 3),(int) (rand()/(RAND_MAX + 1.0) * 3)};
+}
