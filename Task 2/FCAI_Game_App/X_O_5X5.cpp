@@ -141,5 +141,5 @@ bool X_O_5X5::game_is_over () {
 }
 
 pair<int, int> X_O_5X5::A_I_move() {  //Newwwwwwwwwwwwwwwww
-    return {1,2};
+     return {(int) (rand()/(RAND_MAX + 1.0) * 5),(int) (rand()/(RAND_MAX + 1.0) * 5)};
 }
