@@ -118,10 +118,10 @@ bool X_O_5X5::is_winner() {
         if (board[1][2] == 'O' && board[2][1] == 'O' && board[3][0] == 'O') count_o++;
 
         if (count_x < count_o) {
-            cout << "O WINS !!\n";
+            cout << "O WINS !!\nScore : "<<count_o<<"\n";
             exit(0);
         } else if (count_x > count_o) {
-            cout << "X WINS !!\n";
+           cout << "X WINS !!\nScore : "<<count_x<<"\n";
             exit(0);
         }
         else{
