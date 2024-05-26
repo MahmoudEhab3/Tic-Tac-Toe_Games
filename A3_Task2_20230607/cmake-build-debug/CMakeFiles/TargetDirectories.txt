@@ -1,0 +1,3 @@
+C:/Users/Mazen/CLionProjects/A3_Task2_20230607/cmake-build-debug/CMakeFiles/A3_Task2_20230607.dir
+C:/Users/Mazen/CLionProjects/A3_Task2_20230607/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Mazen/CLionProjects/A3_Task2_20230607/cmake-build-debug/CMakeFiles/rebuild_cache.dir

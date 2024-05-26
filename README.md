@@ -1,6 +1,2 @@
-# CS213-2023-A2
-This is the GitHub repository for managing Assignment 3 of the Object Oriented Programming Course (CS213) at FCAI-CU
-# Team members:
-Mazen AbdelFattah - 20230607 |
-Ahmed Elkholy - 20220037 |
-Mahmoud Ehab - 20220457
+# Tic-Tac-Toe Games
+Developed four variations of the Tic-Tac-Toe game: normal 3x3, 5x5, pyramid, and connect 4. Implemented with a Graphical User Interface (GUI) to improve user experience. Utilized ObjectOriented Programming (OOP) concepts, data structures, and algorithms to enhance performance
